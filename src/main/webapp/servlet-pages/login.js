@@ -9,8 +9,7 @@ async function loginSubmit(e){
 		password
 	}
 	
-	
-	let res = await fetch("http://localhost:8080/project1ERS/FrontController",{ 
+	let res = await fetch("http://localhost:8080/project1ERS/login",{ 
 				method: "POST",
 				body: JSON.stringify(credentials),
 				headers:{
