@@ -1,4 +1,4 @@
-package com.servlets.models;
+package com.revature.models;
 
 public class User {
 	

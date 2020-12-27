@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.revature.models.Credentials;
+import com.revature.models.User;
 import com.revature.util.ConnectionFactory;
-import com.servlets.models.Credentials;
-import com.servlets.models.User;
 
 public class UserDAO {
 

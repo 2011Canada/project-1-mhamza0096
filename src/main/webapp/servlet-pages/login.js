@@ -1,13 +1,13 @@
 async function loginSubmit(e){
 	e.preventDefault();
 	
-	let username = document.getElementById("user_login").value
-	let password = document.getElementById("user_password").value
+	let username = document.getElementById("user_login").value;
+	let password = document.getElementById("user_password").value;
 	
 	const credentials = {
 		username,
 		password
-	}
+	};
 	
 	let res = await fetch("http://localhost:8080/project1ERS/login",{ 
 				method: "POST",
@@ -15,11 +15,12 @@ async function loginSubmit(e){
 				headers:{
 					"Content-Type": "application/json"
 				}
-	})
+	});
 				
-	let data = await res.json()
-	alert(data.password)
-};
+	//let data = await res.json();
+	//alert(data.password);
+	window.location.href = "http://localhost:8080/project1ERS/servlet-pages/welcomeEmployee.html";
+}
 
 
 

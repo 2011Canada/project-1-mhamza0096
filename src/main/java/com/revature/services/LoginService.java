@@ -1,8 +1,8 @@
 package com.revature.services;
 
+import com.revature.models.Credentials;
+import com.revature.models.User;
 import com.revature.repositories.UserDAO;
-import com.servlets.models.Credentials;
-import com.servlets.models.User;
 
 public class LoginService {
 	
