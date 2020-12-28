@@ -35,7 +35,7 @@ public class EmployeeReimbursementListController extends HttpServlet {
 		EmployeeReimbursementService ers = new EmployeeReimbursementService();
 		List<Reimbursement> reimbList = ers.getReimburement();
 		resp.setStatus(200);
-		resp.getWriter().write(om.writeValueAsString(reimbList.get(0)));
+		resp.getWriter().write(om.writeValueAsString(reimbList));
 		
 	}
 

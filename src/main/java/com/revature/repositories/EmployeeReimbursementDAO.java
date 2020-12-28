@@ -28,7 +28,16 @@ public class EmployeeReimbursementDAO {
 			
 			while(res.next()) {
 				Reimbursement reimb = new Reimbursement();
+				reimb.setReimb_id(res.getInt("reimb_id"));
 				reimb.setReimb_amount(res.getInt("reimb_amount"));
+				reimb.setReimb_submitted(res.getString("reimb_submitted"));
+				reimb.setReimb_resolved(res.getString("reimb_resolved"));
+				reimb.setReimb_description(res.getString("reimb_description"));
+				//reimb receipt
+				reimb.setReimb_author(res.getInt("reimb_author"));
+				reimb.setReimb_resolver(res.getInt("reimb_resolver"));
+				reimb.setReimb_status_id(res.getInt("reimb_status_id"));
+				reimb.setReimb_type_id(res.getInt("reimb_type_id"));
 				reimbList.add(reimb);
 			}
 			
