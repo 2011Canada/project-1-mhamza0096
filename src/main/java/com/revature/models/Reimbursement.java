@@ -12,8 +12,24 @@ public class Reimbursement {
 	private int reimb_resolver;
 	private int reimb_status_id;
 	private int reimb_type_id;
+	private String reimb_status_description;
+	private String reimb_type_description;
 	
 	
+	
+
+	public String getReimb_type_description() {
+		return reimb_type_description;
+	}
+	public void setReimb_type_description(String reimb_type_description) {
+		this.reimb_type_description = reimb_type_description;
+	}
+	public String getReimb_status_description() {
+		return reimb_status_description;
+	}
+	public void setReimb_status_description(String reimb_status_description) {
+		this.reimb_status_description = reimb_status_description;
+	}
 	public int getReimb_id() {
 		return reimb_id;
 	}

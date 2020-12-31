@@ -56,7 +56,7 @@ async function generateReimbursementList(){
 		button.setAttributeNode(button_attr_3)
 		button.setAttributeNode(button_attr_4)
 		button.setAttributeNode(button_attr_5)
-		button.innerHTML = "Reimbursement reference ID " + data[key].reimb_id
+		button.innerHTML = "Reimbursement reference number " + data[key].reimb_id
 		heading.appendChild(button)
 		
 		/////////data/////////
@@ -79,7 +79,19 @@ async function generateReimbursementList(){
 		data_body_attr.value = "card-body"
 		
 		data_body.setAttributeNode(data_body_attr)
-		data_body.innerHTML = "Reimbursement id is " + data[key].reimb_description
+		data_body.innerHTML = "Reimbursement amount: " + data[key].reimb_amount + 
+							  "<br/>Reimbursement type: " + data[key].reimb_type_description;
+		if(data[key].reimb_status_description === 'PENDING'){
+			data_body.innerHTML +="<br/>Application status: <span style=\"color: orange;\">" + data[key].reimb_status_description + "</span>"
+							 
+		}else if(data[key].reimb_status_description === 'APPROVED')
+			data_body.innerHTML +="<br/>Application status: <span style=\"color: green;\">" + data[key].reimb_status_description + "</span>"
+		else{
+			data_body.innerHTML +="<br/>Application status: <span style=\"color: red;\">" + data[key].reimb_status_description + "</span>"
+		}
+		
+		data_body.innerHTML += "<br/>Date submitted: " + data[key].reimb_submitted + 
+							  "<br/>Description: " + data[key].reimb_description;
 		
 		data_div.appendChild(data_body)
 		card.appendChild(data_div)				

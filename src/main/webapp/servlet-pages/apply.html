@@ -35,30 +35,25 @@
 <form>
   <div class="form-group">
     <label for="exampleFormControlInput1">Amount</label>
-    <input type="number" class="form-control" id="amount">
+    <input type="number" class="form-control" id="amount" min="0">
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Reimbursement description</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="description" rows="3"></textarea>
   </div>
-  
   
    <div class="form-group">
     <label for="exampleFormControlInput1">Select Reimbursement type</label>
-      <select class="form-control">
+      <select class="form-control" id="type">
 	  	<option>Travel</option>
 	  	<option>Office supplies</option>
 	  	<option>Dental</option>
-	  	<option>Medical</option>
-	  	
+	  	<option>Medical</option>  	
 	  </select>
-  </div>
+   </div>
   <button type="submit" class="btn btn-primary mb-2">Apply</button>
-
-  
-  
 </form>
-
+<script src="./applyReimbursement.js"></script>
 </body>
 </html>

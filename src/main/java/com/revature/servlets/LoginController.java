@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Credentials;
@@ -31,6 +32,9 @@ public class LoginController extends HttpServlet {
 			LoginService ls = new LoginService();
 			cred = om.readValue(req.getInputStream(), Credentials.class);
 			User u = ls.getUser(cred);
+			
+			HttpSession session = req.getSession();
+			session.setAttribute("currUser", u);
 			
 			req.getRequestDispatcher("servlet-pages/welcomeEmployee.html").forward(req, resp);
 			
