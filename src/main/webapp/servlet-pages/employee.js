@@ -11,7 +11,6 @@ async function generateReimbursementList(){
 	const data = await res.json();
 	const currentDiv = document.getElementById("accordion");
 	
-	console.log(data[0])
 	
 	
 	for(key in data){

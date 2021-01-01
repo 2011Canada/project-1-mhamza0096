@@ -41,4 +41,14 @@
     <servlet-name>FinanceManagerController</servlet-name>
     <url-pattern>/financeManager</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateStatusController</display-name>
+    <servlet-name>UpdateStatusController</servlet-name>
+    <servlet-class>com.revature.servlets.UpdateStatusController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateStatusController</servlet-name>
+    <url-pattern>/updateStatus</url-pattern>
+  </servlet-mapping>
 </web-app>

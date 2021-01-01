@@ -14,10 +14,16 @@ public class Reimbursement {
 	private int reimb_type_id;
 	private String reimb_status_description;
 	private String reimb_type_description;
-	
+	private String reimb_author_name;
 	
 	
 
+	public String getReimb_author_name() {
+		return reimb_author_name;
+	}
+	public void setReimb_author_name(String reimb_author_name) {
+		this.reimb_author_name = reimb_author_name;
+	}
 	public String getReimb_type_description() {
 		return reimb_type_description;
 	}
