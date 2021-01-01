@@ -40,8 +40,7 @@ public class EmployeeReimbursementService {
 			
 		}
 		r.setReimb_author(u.getUser_id());
-		r.setReimb_type_id(3);
-		System.out.println(r.getReimb_type_id());
+
 		Date date = new Date();
 		String date_submitted = date.getDate() + "-" + date.getMonth() + "-" + date.getYear();
 		r.setReimb_submitted(date_submitted);

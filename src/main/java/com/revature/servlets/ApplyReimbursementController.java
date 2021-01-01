@@ -14,7 +14,7 @@ import com.revature.models.User;
 import com.revature.services.EmployeeReimbursementService;
 
 
-public class ApplyReimbursement extends HttpServlet {
+public class ApplyReimbursementController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 

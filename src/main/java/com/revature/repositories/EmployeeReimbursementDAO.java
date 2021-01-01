@@ -20,7 +20,7 @@ public class EmployeeReimbursementDAO {
 		List<Reimbursement> reimbList = new ArrayList<Reimbursement>();
 		
 		Connection conn = cf.getConnection();
-		String sql = "select * from ers_reimbursement natural join ers_reimbursement_status natural join ers_reimbursement_type where reimb_author = ?";
+		String sql = "select * from ers_reimbursement natural join ers_reimbursement_status natural join ers_reimbursement_type where reimb_author = ? order by reimb_status asc";
 		
 		try {
 			

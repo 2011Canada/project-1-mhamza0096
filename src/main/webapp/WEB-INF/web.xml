@@ -25,10 +25,20 @@
     <description></description>
     <display-name>ApplyReimbursement</display-name>
     <servlet-name>ApplyReimbursement</servlet-name>
-    <servlet-class>com.revature.servlets.ApplyReimbursement</servlet-class>
+    <servlet-class>com.revature.servlets.ApplyReimbursementController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ApplyReimbursement</servlet-name>
     <url-pattern>/apply</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FinanceManagerController</display-name>
+    <servlet-name>FinanceManagerController</servlet-name>
+    <servlet-class>com.revature.servlets.FinanceManagerController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FinanceManagerController</servlet-name>
+    <url-pattern>/financeManager</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -29,6 +29,7 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Credentials cred;
 		try {
+			
 			LoginService ls = new LoginService();
 			cred = om.readValue(req.getInputStream(), Credentials.class);
 			User u = ls.getUser(cred);
@@ -36,12 +37,7 @@ public class LoginController extends HttpServlet {
 			HttpSession session = req.getSession();
 			session.setAttribute("currUser", u);
 			
-			req.getRequestDispatcher("servlet-pages/welcomeEmployee.html").forward(req, resp);
-			
-			//resp.setStatus(200);
-			//resp.getWriter().write(om.writeValueAsString(u));
-			//resp.sendRedirect("servlet-pages/welcomeEmployee.html");
-			
+			resp.getWriter().write(om.writeValueAsString(u));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
