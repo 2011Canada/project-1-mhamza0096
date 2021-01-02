@@ -103,13 +103,38 @@ async function financeManager(){
 		let approve_button_attr_3 = document.createAttribute("id")
 		approve_button_attr_3.value = data[key].reimb_id
 		
+		let approve_button_attr_4 = document.createAttribute("class")
+		approve_button_attr_4.value = "btn btn-success"
+		
 		approve_button.setAttributeNode(approve_button_attr_1)
 		approve_button.setAttributeNode(approve_button_attr_2)
 		approve_button.setAttributeNode(approve_button_attr_3)
+		approve_button.setAttributeNode(approve_button_attr_4)
 		approve_button.innerHTML = "Approve"
+		
+		let deny_button = document.createElement("button")
+		let deny_button_attr_1 = document.createAttribute("type")
+		deny_button_attr_1.value = "button"
+		
+		let deny_button_attr_2 = document.createAttribute("onclick")
+		deny_button_attr_2.value = "denyStatus(this)"
+		
+		let deny_button_attr_3 = document.createAttribute("id")
+		deny_button_attr_3.value = data[key].reimb_id
+		
+		let deny_button_attr_4 = document.createAttribute("class")
+		deny_button_attr_4.value = "btn btn-danger"
+		
+		deny_button.setAttributeNode(deny_button_attr_1)
+		deny_button.setAttributeNode(deny_button_attr_2)
+		deny_button.setAttributeNode(deny_button_attr_3)
+		deny_button.setAttributeNode(deny_button_attr_4)
+		deny_button.innerHTML = "Deny"
 		
 		data_div.appendChild(data_body)
 		data_div.appendChild(approve_button)
+		data_div.appendChild(deny_button)
+		
 		
 		card.appendChild(data_div)				
 		
@@ -132,13 +157,38 @@ async function approveStatus(elem){
 		reimb_id
 	}
 	
-	let res = await fetch("http://localhost:8080/project1ERS/updateStatus",{ 
+	let res = await fetch("http://localhost:8080/project1ERS/approveStatus",{ 
 				method: "POST",
 				body: JSON.stringify(updateStatus),
 				headers:{
 					"Content-Type": "application/json"
 				}
 	});
+	
+	window.location.href = "http://localhost:8080/project1ERS/servlet-pages/welcomeFinanceManager.html";
+
+}
+
+
+async function denyStatus(elem){
+	
+	let status = "DENIED"
+	let reimb_id = elem.id
+	
+	const updateStatus = {
+		status,
+		reimb_id
+	}
+	
+	let res = await fetch("http://localhost:8080/project1ERS/denyStatus",{ 
+				method: "POST",
+				body: JSON.stringify(updateStatus),
+				headers:{
+					"Content-Type": "application/json"
+				}
+	});
+	
+	window.location.href = "http://localhost:8080/project1ERS/servlet-pages/welcomeFinanceManager.html";
 
 }
 

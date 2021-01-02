@@ -26,7 +26,7 @@ public class EmployeeReimbursementDAO {
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, u.getUser_id());
-			System.out.println(u.getUser_id());
+
 			ResultSet res = ps.executeQuery();
 			
 			while(res.next()) {

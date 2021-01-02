@@ -43,12 +43,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>UpdateStatusController</display-name>
-    <servlet-name>UpdateStatusController</servlet-name>
-    <servlet-class>com.revature.servlets.UpdateStatusController</servlet-class>
+    <display-name>ApproveStatusController</display-name>
+    <servlet-name>ApproveStatusController</servlet-name>
+    <servlet-class>com.revature.servlets.ApproveStatusController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdateStatusController</servlet-name>
-    <url-pattern>/updateStatus</url-pattern>
+    <servlet-name>ApproveStatusController</servlet-name>
+    <url-pattern>/approveStatus</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DenyStatusController</display-name>
+    <servlet-name>DenyStatusController</servlet-name>
+    <servlet-class>com.revature.servlets.DenyStatusController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DenyStatusController</servlet-name>
+    <url-pattern>/denyStatus</url-pattern>
   </servlet-mapping>
 </web-app>

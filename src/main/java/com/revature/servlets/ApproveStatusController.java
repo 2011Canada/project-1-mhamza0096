@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Status;
+import com.revature.services.FinanceManagerReimbursementService;
 
 
-public class UpdateStatusController extends HttpServlet {
+public class ApproveStatusController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
   
@@ -21,13 +22,11 @@ public class UpdateStatusController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper om = new ObjectMapper();
-		
-		
+		FinanceManagerReimbursementService fms = new FinanceManagerReimbursementService(); 
 		
 		Status s = new Status();
 		s = om.readValue(req.getInputStream(), Status.class);
-		System.out.println(s.getStatus() + " " + s.getReimb_id());
-		
+		fms.updateStatus(s.getStatus(), s.getReimb_id());
 		
 	}
 

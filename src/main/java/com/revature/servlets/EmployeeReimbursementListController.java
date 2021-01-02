@@ -37,7 +37,6 @@ public class EmployeeReimbursementListController extends HttpServlet {
 		HttpSession session = req.getSession();
 		User u = (User) session.getAttribute("currUser");
 		
-		System.out.println(u);
 		
 		EmployeeReimbursementService ers = new EmployeeReimbursementService();
 		List<Reimbursement> reimbList = ers.getReimburement(u);

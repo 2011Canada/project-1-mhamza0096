@@ -18,7 +18,8 @@ async function loginSubmit(e){
 	});
 				
 	let data = await res.json();
-	//alert(data.password);
+
+
 	if(data.role_id === 1){
 		window.location.href = "http://localhost:8080/project1ERS/servlet-pages/welcomeFinanceManager.html";
 	} else{

@@ -21,8 +21,6 @@ public class EmployeeReimbursementService {
 		
 		Reimbursement r = new Reimbursement();
 		
-		
-		
 		r.setReimb_amount(rd.getAmount());
 		r.setReimb_description(rd.getDescription());
 		

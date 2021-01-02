@@ -14,5 +14,11 @@ public class FinanceManagerReimbursementService {
 		
 		return fmdao.getReimbursementList();
 	}
+	
+	public void updateStatus(String status, int reimb_id) {
+		
+		fmdao.updateStatus(status, reimb_id);
+		
+	}
 
 }

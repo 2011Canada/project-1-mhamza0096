@@ -54,4 +54,26 @@ public class FinanceManagerReimbursementDAO {
 		return null;
 	}
 
+	public void updateStatus(String status, int reimb_id) {
+		
+		Connection conn = cf.getConnection();
+		String sql = "update ers_reimbursement set reimb_status_id = ? where reimb_id = ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			if(status.equals("APPROVED")) {
+				ps.setInt(1, 1);
+			}
+			else {
+				ps.setInt(1, 2);
+			}
+			
+			ps.setInt(2, reimb_id);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }
