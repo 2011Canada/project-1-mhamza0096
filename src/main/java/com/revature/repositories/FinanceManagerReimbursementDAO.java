@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.models.Reimbursement;
+import com.revature.models.User;
 import com.revature.util.ConnectionFactory;
 
 public class FinanceManagerReimbursementDAO {
@@ -36,7 +38,7 @@ public class FinanceManagerReimbursementDAO {
 				reimb.setReimb_description(res.getString("reimb_description"));
 				//reimb receipt
 				reimb.setReimb_author(res.getInt("reimb_author"));
-				reimb.setReimb_resolver(res.getInt("reimb_resolver"));
+				reimb.setReimb_resolver(res.getString("reimb_resolver"));
 				reimb.setReimb_status_id(res.getInt("reimb_status_id"));
 				reimb.setReimb_type_id(res.getInt("reimb_type_id"));
 				reimb.setReimb_status_description(res.getString("reimb_status"));
@@ -55,10 +57,12 @@ public class FinanceManagerReimbursementDAO {
 		return null;
 	}
 
-	public void updateStatus(String status, int reimb_id) {
+	public void updateStatus(String status, int reimb_id, User u) {
 		
 		Connection conn = cf.getConnection();
-		String sql = "update ers_reimbursement set reimb_status_id = ? where reimb_id = ?";
+		LocalDate lc = LocalDate.now();
+		
+		String sql = "update ers_reimbursement set reimb_status_id = ?, reimb_resolved = ?, reimb_resolver = ? where reimb_id = ?";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -68,8 +72,11 @@ public class FinanceManagerReimbursementDAO {
 			else {
 				ps.setInt(1, 2);
 			}
+			ps.setString(2, lc.toString());
+			ps.setString(3, u.getFirstName() + " " + u.getLastName());
+			ps.setInt(4, reimb_id);
 			
-			ps.setInt(2, reimb_id);
+			
 			ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

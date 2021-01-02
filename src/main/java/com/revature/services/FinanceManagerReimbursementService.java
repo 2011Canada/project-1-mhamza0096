@@ -15,9 +15,9 @@ public class FinanceManagerReimbursementService {
 		return fmdao.getReimbursementList(status);
 	}
 	
-	public void updateStatus(String status, int reimb_id) {
+	public void updateStatus(String status, int reimb_id, User u) {
 		
-		fmdao.updateStatus(status, reimb_id);
+		fmdao.updateStatus(status, reimb_id, u);
 		
 	}
 

@@ -38,7 +38,7 @@ public class EmployeeReimbursementDAO {
 				reimb.setReimb_description(res.getString("reimb_description"));
 				//reimb receipt
 				reimb.setReimb_author(res.getInt("reimb_author"));
-				reimb.setReimb_resolver(res.getInt("reimb_resolver"));
+				reimb.setReimb_resolver(res.getString("reimb_resolver"));
 				reimb.setReimb_status_id(res.getInt("reimb_status_id"));
 				reimb.setReimb_type_id(res.getInt("reimb_type_id"));
 				reimb.setReimb_status_description(res.getString("reimb_status"));

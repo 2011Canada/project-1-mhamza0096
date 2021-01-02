@@ -9,7 +9,7 @@ public class Reimbursement {
 	private String reimb_description;
 	private int reimb_receipt;
 	private int reimb_author;
-	private int reimb_resolver;
+	private String reimb_resolver;
 	private int reimb_status_id;
 	private int reimb_type_id;
 	private String reimb_status_description;
@@ -18,6 +18,12 @@ public class Reimbursement {
 	
 	
 
+	public String getReimb_resolver() {
+		return reimb_resolver;
+	}
+	public void setReimb_resolver(String reimb_resolver) {
+		this.reimb_resolver = reimb_resolver;
+	}
 	public String getReimb_author_name() {
 		return reimb_author_name;
 	}
@@ -78,12 +84,7 @@ public class Reimbursement {
 	public void setReimb_author(int reimb_author) {
 		this.reimb_author = reimb_author;
 	}
-	public int getReimb_resolver() {
-		return reimb_resolver;
-	}
-	public void setReimb_resolver(int reimb_resolver) {
-		this.reimb_resolver = reimb_resolver;
-	}
+
 	public int getReimb_status_id() {
 		return reimb_status_id;
 	}

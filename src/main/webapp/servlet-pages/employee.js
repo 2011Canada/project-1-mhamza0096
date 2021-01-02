@@ -14,7 +14,7 @@ async function generateReimbursementList(){
 	
 	
 	for(key in data){
-		
+		console.log(data[key])
 		let card = document.createElement("div")
 		let card_class = document.createAttribute("class")
 		card_class.value = "card"
@@ -104,8 +104,17 @@ async function generateReimbursementList(){
 			data_body.innerHTML +="<br/>Application status: <span style=\"color: red;\">" + data[key].reimb_status_description + "</span>"
 		}
 		
-		data_body.innerHTML += "<br/>Date submitted: " + data[key].reimb_submitted + 
-							  "<br/>Description: " + data[key].reimb_description;
+		if(data[key].reimb_resolver != 0){
+			data_body.innerHTML += "<br/> Resolved by: " + data[key].reimb_resolver
+		}
+	
+		data_body.innerHTML += "<br/>Date submitted: " + data[key].reimb_submitted
+		
+		if(data[key].reimb_resolved !== ""){
+			data_body.innerHTML += "<br/>Date Resolved: " + data[key].reimb_resolved 
+		} 
+		
+		data_body.innerHTML += "<br/>Description: " + data[key].reimb_description
 		
 		data_div.appendChild(data_body)
 		card.appendChild(data_div)				
