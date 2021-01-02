@@ -28,12 +28,10 @@ public class FinanceManagerController extends HttpServlet {
 		ObjectMapper om = new ObjectMapper();
 		
 		HttpSession session = req.getSession();
-		User u = (User) session.getAttribute("currUser");
-		
-		System.out.println(u);
+		String status = om.readValue(req.getInputStream(), String.class);
 		
 		FinanceManagerReimbursementService ers = new FinanceManagerReimbursementService();
-		List<Reimbursement> reimbList = ers.getReimburementList(u);
+		List<Reimbursement> reimbList = ers.getReimburementList(status);
 		resp.setStatus(200);
 		resp.getWriter().write(om.writeValueAsString(reimbList));
 		

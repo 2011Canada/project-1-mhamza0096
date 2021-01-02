@@ -50,12 +50,27 @@ async function generateReimbursementList(){
 		button_attr_4.value = "#target-" + data[key].reimb_id
 		let button_attr_5 = document.createAttribute("aria-expanded")
 		button_attr_5.value = "false"
+		let button_attr_6 = document.createAttribute("style")
+		button_attr_6.value = "text-decoration:none"
+		
+		
 		
 		button.setAttributeNode(button_attr_1)
 		button.setAttributeNode(button_attr_3)
 		button.setAttributeNode(button_attr_4)
 		button.setAttributeNode(button_attr_5)
-		button.innerHTML = "Reimbursement reference number " + data[key].reimb_id
+		button.setAttributeNode(button_attr_6)
+		button.innerHTML = "Reimbursement reference number " + data[key].reimb_id + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+		
+		if(data[key].reimb_status_description === 'PENDING'){
+			button.innerHTML +="Application status: <span style=\"color: orange;\">" + data[key].reimb_status_description + "</span>"
+							 
+		}else if(data[key].reimb_status_description === 'APPROVED')
+			button.innerHTML +="Application status:&ensp;<span style=\"color: green;\">" + data[key].reimb_status_description + "</span>"
+		else{
+			button.innerHTML +="Application status:&ensp;<span style=\"color: red;\">" + data[key].reimb_status_description + "</span>"
+		}
+		
 		heading.appendChild(button)
 		
 		/////////data/////////

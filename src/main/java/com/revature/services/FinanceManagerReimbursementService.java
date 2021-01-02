@@ -10,9 +10,9 @@ public class FinanceManagerReimbursementService {
 
 	FinanceManagerReimbursementDAO fmdao = new FinanceManagerReimbursementDAO();
 	
-	public List<Reimbursement> getReimburementList(User u) {
+	public List<Reimbursement> getReimburementList(String status) {
 		
-		return fmdao.getReimbursementList();
+		return fmdao.getReimbursementList(status);
 	}
 	
 	public void updateStatus(String status, int reimb_id) {

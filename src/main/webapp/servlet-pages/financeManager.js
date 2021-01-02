@@ -1,10 +1,10 @@
 
 
-async function financeManager(){
-	
+async function financeManager(status){
 	
 	let res = await fetch("http://localhost:8080/project1ERS/financeManager",{ 
 				method: "POST",
+				body: JSON.stringify(status),
 				headers:{
 					"Content-Type": "application/json"
 				}
@@ -19,6 +19,8 @@ async function financeManager(){
 		let card = document.createElement("div")
 		let card_class = document.createAttribute("class")
 		card_class.value = "card"
+
+		
 		card.setAttributeNode(card_class);
 		
 		
@@ -93,48 +95,52 @@ async function financeManager(){
 		data_body.innerHTML += "<br/>Date submitted: " + data[key].reimb_submitted + 
 							  "<br/>Description: " + data[key].reimb_description;
 		
-		let approve_button = document.createElement("button")
-		let approve_button_attr_1 = document.createAttribute("type")
-		approve_button_attr_1.value = "button"
 		
-		let approve_button_attr_2 = document.createAttribute("onclick")
-		approve_button_attr_2.value = "approveStatus(this)"
-		
-		let approve_button_attr_3 = document.createAttribute("id")
-		approve_button_attr_3.value = data[key].reimb_id
-		
-		let approve_button_attr_4 = document.createAttribute("class")
-		approve_button_attr_4.value = "btn btn-success"
-		
-		approve_button.setAttributeNode(approve_button_attr_1)
-		approve_button.setAttributeNode(approve_button_attr_2)
-		approve_button.setAttributeNode(approve_button_attr_3)
-		approve_button.setAttributeNode(approve_button_attr_4)
-		approve_button.innerHTML = "Approve"
-		
-		let deny_button = document.createElement("button")
-		let deny_button_attr_1 = document.createAttribute("type")
-		deny_button_attr_1.value = "button"
-		
-		let deny_button_attr_2 = document.createAttribute("onclick")
-		deny_button_attr_2.value = "denyStatus(this)"
-		
-		let deny_button_attr_3 = document.createAttribute("id")
-		deny_button_attr_3.value = data[key].reimb_id
-		
-		let deny_button_attr_4 = document.createAttribute("class")
-		deny_button_attr_4.value = "btn btn-danger"
-		
-		deny_button.setAttributeNode(deny_button_attr_1)
-		deny_button.setAttributeNode(deny_button_attr_2)
-		deny_button.setAttributeNode(deny_button_attr_3)
-		deny_button.setAttributeNode(deny_button_attr_4)
-		deny_button.innerHTML = "Deny"
+		if(status === "PENDING"){
+			
+			let approve_button = document.createElement("button")
+			let approve_button_attr_1 = document.createAttribute("type")
+			approve_button_attr_1.value = "button"
+			
+			let approve_button_attr_2 = document.createAttribute("onclick")
+			approve_button_attr_2.value = "approveStatus(this)"
+			
+			let approve_button_attr_3 = document.createAttribute("id")
+			approve_button_attr_3.value = data[key].reimb_id
+			
+			let approve_button_attr_4 = document.createAttribute("class")
+			approve_button_attr_4.value = "btn btn-success"
+			
+			approve_button.setAttributeNode(approve_button_attr_1)
+			approve_button.setAttributeNode(approve_button_attr_2)
+			approve_button.setAttributeNode(approve_button_attr_3)
+			approve_button.setAttributeNode(approve_button_attr_4)
+			approve_button.innerHTML = "Approve"
+			
+			let deny_button = document.createElement("button")
+			let deny_button_attr_1 = document.createAttribute("type")
+			deny_button_attr_1.value = "button"
+			
+			let deny_button_attr_2 = document.createAttribute("onclick")
+			deny_button_attr_2.value = "denyStatus(this)"
+			
+			let deny_button_attr_3 = document.createAttribute("id")
+			deny_button_attr_3.value = data[key].reimb_id
+			
+			let deny_button_attr_4 = document.createAttribute("class")
+			deny_button_attr_4.value = "btn btn-danger"
+			
+			deny_button.setAttributeNode(deny_button_attr_1)
+			deny_button.setAttributeNode(deny_button_attr_2)
+			deny_button.setAttributeNode(deny_button_attr_3)
+			deny_button.setAttributeNode(deny_button_attr_4)
+			deny_button.innerHTML = "Deny"
+			
+			data_div.appendChild(approve_button)
+			data_div.appendChild(deny_button)
+		}
 		
 		data_div.appendChild(data_body)
-		data_div.appendChild(approve_button)
-		data_div.appendChild(deny_button)
-		
 		
 		card.appendChild(data_div)				
 		
@@ -193,4 +199,59 @@ async function denyStatus(elem){
 }
 
 
-document.onload = financeManager()
+
+function createAccordion(){
+	let body = document.getElementsByTagName("body")[0]
+	
+	let accord = document.createElement("div")
+	let accord_attr = document.createAttribute("id")
+	accord_attr.value = "accordion"
+	accord.setAttributeNode(accord_attr)
+	body.appendChild(accord)
+}
+
+
+function viewPending(){
+	let accordion = document.getElementById("accordion")
+
+	if(accordion == null){
+		createAccordion()
+		financeManager("PENDING")
+	} else{
+		document.getElementById("accordion").remove()
+		createAccordion()
+		financeManager("PENDING")
+	}
+	
+}
+
+
+
+function viewApproved(){
+	let accordion = document.getElementById("accordion");
+	
+	if(accordion == null){
+		createAccordion()	
+		financeManager("APPROVED")
+		
+	} else{
+		document.getElementById("accordion").remove()
+		createAccordion()
+		financeManager("APPROVED")
+	}
+}
+
+async function viewDenied(){
+	let accordion = document.getElementById("accordion");
+
+	if(accordion == null){
+		createAccordion()
+		financeManager("DENIED")
+	} else{
+		document.getElementById("accordion").remove()
+		createAccordion()
+		financeManager("DENIED")
+	}
+}
+
+document.onload = viewPending()

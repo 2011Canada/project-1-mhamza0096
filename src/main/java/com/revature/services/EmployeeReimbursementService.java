@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -39,8 +40,9 @@ public class EmployeeReimbursementService {
 		}
 		r.setReimb_author(u.getUser_id());
 
-		Date date = new Date();
-		String date_submitted = date.getDate() + "-" + date.getMonth() + "-" + date.getYear();
+		LocalDate date = LocalDate.now();
+		
+		String date_submitted = date.toString();
 		r.setReimb_submitted(date_submitted);
 		erdao.applyReimbursement(r);
 		

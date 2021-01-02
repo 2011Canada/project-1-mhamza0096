@@ -14,16 +14,17 @@ public class FinanceManagerReimbursementDAO {
 
 	ConnectionFactory cf = ConnectionFactory.getConnectionFactory();
 	
-	public List<Reimbursement> getReimbursementList() {
+	public List<Reimbursement> getReimbursementList(String status) {
 		
 		List<Reimbursement> reimbList = new ArrayList<Reimbursement>();
 		
 		Connection conn = cf.getConnection();
-		String sql = "select * from ers_reimbursement r natural join ers_users u natural join ers_reimbursement_type natural join ers_reimbursement_status where reimb_status = 'PENDING' and ers_user_role_id = 2 and u.ers_users_id = r.reimb_author";
+		String sql = "select * from ers_reimbursement r natural join ers_users u natural join ers_reimbursement_type natural join ers_reimbursement_status where reimb_status = ? and ers_user_role_id = 2 and u.ers_users_id = r.reimb_author";
 		
 		try {
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, status);
 			ResultSet res = ps.executeQuery();
 			
 			while(res.next()) {
