@@ -11,25 +11,45 @@
 	<link href="login.css" rel="stylesheet">
 	<!------ Include the above in your HEAD tag ---------->
 	
-	<div class="wrapper fadeInDown">
-	  <div id="formContent">
-	    <!-- Tabs Titles -->
+	<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Employee Reimbursement System Login</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Username</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="user_login" class="form-control" name="email-address" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <div class="col-md-6">
+                                    <input type="password" id="user_password" class="form-control" name="password" required>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+                            </div>
+                         </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
 	
-	    <!-- Icon -->
-	    <div class="fadeIn first">
-	      <img src="https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png" id="icon" alt="User Icon" />
-	    </div>
-	
-	    <!-- Login Form -->
-	    <form>
-	      <input type="text" id="user_login" class="fadeIn second" name="login" placeholder="login">
-	      <input type="text" id="user_password" class="fadeIn third" name="login" placeholder="password">
-	      <input type="submit" class="fadeIn fourth" value="Log In">
-	    </form>
-	
-	
-	  </div>
-	</div>
 	<script src="./login.js"></script>
 </body>
 </html>

@@ -91,13 +91,13 @@ async function financeManager(status){
 		else{
 			data_body.innerHTML +="<br/>Application status: <span style=\"color: red;\">" + data[key].reimb_status_description + "</span>"
 		}
+		data_body.innerHTML += "<br/>Employee number: " + data[key].reimb_author
+		data_body.innerHTML += "<br/>Date submitted: " + data[key].reimb_submitted
 		
-		data_body.innerHTML += "<br/>Date submitted: " + data[key].reimb_submitted + 
-							  "<br/>Description: " + data[key].reimb_description;
-		
+		data_div.appendChild(data_body)
 		
 		if(status === "PENDING"){
-			
+			data_body.innerHTML += "<br/>Description: " + data[key].reimb_description
 			let approve_button = document.createElement("button")
 			let approve_button_attr_1 = document.createAttribute("type")
 			approve_button_attr_1.value = "button"
@@ -138,9 +138,12 @@ async function financeManager(status){
 			
 			data_div.appendChild(approve_button)
 			data_div.appendChild(deny_button)
+		}else{
+			data_body.innerHTML += "<br/>Date Resolved: " + data[key].reimb_resolved
+			data_body.innerHTML += "<br/>Description: " + data[key].reimb_description
 		}
 		
-		data_div.appendChild(data_body)
+		
 		
 		card.appendChild(data_div)				
 		

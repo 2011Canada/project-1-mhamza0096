@@ -5,8 +5,6 @@ async function applyReimbursement(e){
 	let description = document.getElementById("description").value;
 	let type = document.getElementById("type").value;
 	
-	alert(type)
-	
 	const data = {
 		amount,
 		description,
