@@ -45,3 +45,6 @@ https://aws.amazon.com/
 - Finance manager can view all pending/approved/denied requests 
 - Finance manager can approve or deny a reimbursement request
 - Finance manager can logout
+
+### License
+- The project is under the GNU General Public License
